@@ -1,0 +1,134 @@
+Enter password: *****
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 14
+Server version: 8.0.32 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2023, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show database;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'database' at line 1
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| babusindhu         |
+| dbms1              |
+| department         |
+| eldorado           |
+| faculty            |
+| github             |
+| hyper              |
+| industry           |
+| information_schema |
+| ishashank          |
+| mahendra           |
+| mysql              |
+| narendra           |
+| openai             |
+| pandu              |
+| performance_schema |
+| rumaan             |
+| sakila             |
+| satya              |
+| sec                |
+| serty              |
+| simam              |
+| somesh             |
+| sse                |
+| student            |
+| suresh             |
+| world              |
++--------------------+
+27 rows in set (0.01 sec)
+
+mysql> use narendra;
+Database changed
+mysql> desc students;
+ERROR 1146 (42S02): Table 'narendra.students' doesn't exist
+mysql> create students;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'students' at line 1
+mysql> create table students(name varchar(30),id int,age int,place char(30));
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> desc students;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| name  | varchar(30) | YES  |     | NULL    |       |
+| id    | int         | YES  |     | NULL    |       |
+| age   | int         | YES  |     | NULL    |       |
+| place | char(30)    | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> insert into students values("hussain",13137198,18,"andhra"),("jayanthbhai",207687889,20,"america"),("jashwanth",897658978,20,"andhra");
+Query OK, 3 rows affected (0.01 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> select * from students;
++-------------+-----------+------+---------+
+| name        | id        | age  | place   |
++-------------+-----------+------+---------+
+| hussain     |  13137198 |   18 | andhra  |
+| jayanthbhai | 207687889 |   20 | america |
+| jashwanth   | 897658978 |   20 | andhra  |
++-------------+-----------+------+---------+
+3 rows in set (0.00 sec)
+
+mysql> update table students set=19 where age=18;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'table students set=19 where age=18' at line 1
+mysql> update table students set age=19 where age=18;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'table students set age=19 where age=18' at line 1
+mysql> update table students set age=19 where place="andhra";
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'table students set age=19 where place="andhra"' at line 1
+mysql> update students set age=19 where place="andhra";
+Query OK, 2 rows affected (0.00 sec)
+Rows matched: 2  Changed: 2  Warnings: 0
+
+mysql> select * from students;
++-------------+-----------+------+---------+
+| name        | id        | age  | place   |
++-------------+-----------+------+---------+
+| hussain     |  13137198 |   19 | andhra  |
+| jayanthbhai | 207687889 |   20 | america |
+| jashwanth   | 897658978 |   19 | andhra  |
++-------------+-----------+------+---------+
+3 rows in set (0.00 sec)
+
+mysql> alter table students drop age;
+Query OK, 0 rows affected (0.01 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> select * from students;
++-------------+-----------+---------+
+| name        | id        | place   |
++-------------+-----------+---------+
+| hussain     |  13137198 | andhra  |
+| jayanthbhai | 207687889 | america |
+| jashwanth   | 897658978 | andhra  |
++-------------+-----------+---------+
+3 rows in set (0.00 sec)
+
+mysql> delete table students;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'table students' at line 1
+mysql> truncate table students;
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> select * from students;
+Empty set (0.00 sec)
+
+mysql> desc students;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| name  | varchar(30) | YES  |     | NULL    |       |
+| id    | int         | YES  |     | NULL    |       |
+| place | char(30)    | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
