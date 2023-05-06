@@ -1,0 +1,83 @@
+mysql> alter table student add fathername varchar(30);
+Query OK, 0 rows affected (0.01 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> update student set  regno=23 where age=15;
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update student set  regno=45 where age=16;
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update student set  name='mansoor' where gender='M';
+Query OK, 3 rows affected (0.00 sec)
+Rows matched: 3  Changed: 3  Warnings: 0
+
+mysql> select*from student;
++----+---------+------+-------+-------+-------------+---------+--------+------+-------+------------+
+| id | name    | age  | place | marks | phonenumber | subject | gender | dob  | regno | fathername |
++----+---------+------+-------+-------+-------------+---------+--------+------+-------+------------+
+|  1 | mansoor |   19 | plan  |    78 |         878 | msjk    | M      | 9879 |  NULL | NULL       |
+|  4 | mansoor |   15 | dfgh  |    90 |         678 | xcvbn   | m      | 1234 |    23 | NULL       |
+|  5 | mansoor |   16 | bfgh  |    98 |         678 | vbn     | m      | 6789 |    45 | NULL       |
++----+---------+------+-------+-------+-------------+---------+--------+------+-------+------------+
+3 rows in set (0.00 sec)
+
+mysql> select*from student where marks BETWEEN 78 and 98;
++----+---------+------+-------+-------+-------------+---------+--------+------+-------+------------+
+| id | name    | age  | place | marks | phonenumber | subject | gender | dob  | regno | fathername |
++----+---------+------+-------+-------+-------------+---------+--------+------+-------+------------+
+|  1 | mansoor |   19 | plan  |    78 |         878 | msjk    | M      | 9879 |  NULL | NULL       |
+|  4 | mansoor |   15 | dfgh  |    90 |         678 | xcvbn   | m      | 1234 |    23 | NULL       |
+|  5 | mansoor |   16 | bfgh  |    98 |         678 | vbn     | m      | 6789 |    45 | NULL       |
++----+---------+------+-------+-------+-------------+---------+--------+------+-------+------------+
+3 rows in set (0.00 sec)
+
+mysql> select*from student where marks BETWEEN 78 and 90;
++----+---------+------+-------+-------+-------------+---------+--------+------+-------+------------+
+| id | name    | age  | place | marks | phonenumber | subject | gender | dob  | regno | fathername |
++----+---------+------+-------+-------+-------------+---------+--------+------+-------+------------+
+|  1 | mansoor |   19 | plan  |    78 |         878 | msjk    | M      | 9879 |  NULL | NULL       |
+|  4 | mansoor |   15 | dfgh  |    90 |         678 | xcvbn   | m      | 1234 |    23 | NULL       |
++----+---------+------+-------+-------+-------------+---------+--------+------+-------+------------+
+2 rows in set (0.00 sec)
+
+mysql> select*from student where marks  NOT BETWEEN 78 and 90;
++----+---------+------+-------+-------+-------------+---------+--------+------+-------+------------+
+| id | name    | age  | place | marks | phonenumber | subject | gender | dob  | regno | fathername |
++----+---------+------+-------+-------+-------------+---------+--------+------+-------+------------+
+|  5 | mansoor |   16 | bfgh  |    98 |         678 | vbn     | m      | 6789 |    45 | NULL       |
++----+---------+------+-------+-------+-------------+---------+--------+------+-------+------------+
+1 row in set (0.00 sec)
+
+mysql> select sum(marks) from student where gender='M';
++------------+
+| sum(marks) |
++------------+
+|        266 |
++------------+
+1 row in set (0.00 sec)
+
+mysql> select avg(marks) as Average from student;
++---------+
+| Average |
++---------+
+| 88.6667 |
++---------+
+1 row in set (0.00 sec)
+
+mysql> select min(marks) as minimum from student;
++---------+
+| minimum |
++---------+
+|      78 |
++---------+
+1 row in set (0.00 sec)
+
+mysql> select max(marks) as maximum from student;
++---------+
+| maximum |
++---------+
+|      98 |
++---------+
