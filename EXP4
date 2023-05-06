@@ -1,0 +1,53 @@
+nter password: *****
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 12
+Server version: 8.0.32 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2023, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> use student;
+Database changed
+mysql> select*from student;
++----+------+------+-------+-------+-------------+---------+--------+------+
+| id | name | age  | place | marks | phonenumber | subject | gender | dob  |
++----+------+------+-------+-------+-------------+---------+--------+------+
+|  1 | mmm  |   12 | plan  |    78 |         878 | msjk    | M      | 9879 |
+|  3 | vbn  |   14 | fvbnm |    90 |         890 | fghjsk  | m      |  978 |
+|  4 | bnm, |   15 | dfgh  |    90 |         678 | xcvbn   | m      | 1234 |
+|  5 | bmw, |   16 | bfgh  |    98 |         678 | vbn     | m      | 6789 |
++----+------+------+-------+-------+-------------+---------+--------+------+
+4 rows in set (0.00 sec)
+
+mysql> update student set name='mohammad' where age=12;
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select*from student;
++----+----------+------+-------+-------+-------------+---------+--------+------+
+| id | name     | age  | place | marks | phonenumber | subject | gender | dob  |
++----+----------+------+-------+-------+-------------+---------+--------+------+
+|  1 | mohammad |   12 | plan  |    78 |         878 | msjk    | M      | 9879 |
+|  3 | vbn      |   14 | fvbnm |    90 |         890 | fghjsk  | m      |  978 |
+|  4 | bnm,     |   15 | dfgh  |    90 |         678 | xcvbn   | m      | 1234 |
+|  5 | bmw,     |   16 | bfgh  |    98 |         678 | vbn     | m      | 6789 |
++----+----------+------+-------+-------+-------------+---------+--------+------+
+4 rows in set (0.00 sec)
+
+mysql> delete from student where name='vbn';
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select*from student;
++----+----------+------+-------+-------+-------------+---------+--------+------+
+| id | name     | age  | place | marks | phonenumber | subject | gender | dob  |
++----+----------+------+-------+-------+-------------+---------+--------+------+
+|  1 | mohammad |   12 | plan  |    78 |         878 | msjk    | M      | 9879 |
+|  4 | bnm,     |   15 | dfgh  |    90 |         678 | xcvbn   | m      | 1234 |
+|  5 | bmw,     |   16 | bfgh  |    98 |         678 | vbn     | m      | 6789 |
++----+----------+------+-------+-------+-------------+---------+--------+------+
+3 rows in set (0.00 sec)
